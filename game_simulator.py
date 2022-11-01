@@ -32,7 +32,7 @@ class ChessGame():
         node = game_pgn
             
         while not self.is_game_over():
-            self.current_player = not self.current_player
+            
             if not self.current_player:
                 move = self.get_white_move()     
             else:
@@ -40,6 +40,8 @@ class ChessGame():
 
             self.board.push(move)
             node = node.add_variation(move)
+
+            self.current_player = not self.current_player
 
         return self.board.outcome(), game_pgn
 
